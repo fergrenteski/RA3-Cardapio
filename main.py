@@ -34,11 +34,11 @@ def printMenu():
     print("3) Alterar Itens do cardápio")
     print("4) Buscar itens no cardápio")
     print("5) Listar todos os itens do cardápio")
-    print("6) Salvar e sair")
+    print("6) Sair")
     print("-------------------------------------")
 
 # Limpa Console
-def limpar_console():
+def clearConsole():
     input("\n Pressione Enter para continuar...")
     # Verifica o Sistema
     if os.name == 'nt':
@@ -49,7 +49,7 @@ def limpar_console():
         os.system('clear')
 
 # Carrega itens do arquivo "cardapio.txt"
-def carregar_itens():
+def loadItems():
      # Verifica se existe arquivo "cardapio.txt"
      if os.path.exists("cardapio.txt"):
         # Abre o arquivo com modo leitura "r"
@@ -142,13 +142,13 @@ def save():
             file.write("\n")
 
 # Carrega os itens que estão no arquivo "cardápio.txt"
-carregar_itens()
+loadItems()
 
 # Looping de execução do programa
 while True:
     # Limpa Console
     if contagem > 0:
-        limpar_console()
+        clearConsole()
     contagem += 1
     # Exibe menu
     printMenu()
@@ -173,10 +173,10 @@ while True:
     elif(option == "5"):
         printItens()
 
-    # Salvar em txt e Sair
+    # Sair
     elif(option == "6"):
         print("Saindo...")
         break
-
+    # Opção Inválida
     else:
         print("Opção inválida, digite novamente.")
