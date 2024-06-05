@@ -1,0 +1,25 @@
+Categoria: Bebidas
+Tipo: 1
+Nome: 1
+Preço: 1
+
+Categoria: Prato Principal
+Tipo: 2
+Nome: 2
+Preço: 2
+
+Categoria: Sobremesas
+Tipo: 3
+Nome: 3
+Preço: 3
+
+Categoria: Bebidas
+Tipo: coca
+Nome: coca
+Preço: 5,00
+
+Categoria: Bebidas
+Tipo: zero
+Nome: zero
+Preço: 5,00
+

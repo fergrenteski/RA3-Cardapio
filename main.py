@@ -37,11 +37,10 @@ def addItem():
     # Percorre as categorias exibindo cada uma delas
     for key, value in categorias.items():
         print(f"{key}) {value}")
-    option = input("Digite o número da categoria: ")
-    
+    optionC = input("Digite o número da categoria: ")
     # Verificar se a categoria escolhida é válida
-    if option in categorias:
-        produto["category"] = categorias[option]
+    if optionC in categorias:
+        produto["category"] = categorias[optionC]
     else:
         print("Categoria inválida. Item não adicionado.")
         return
@@ -54,6 +53,8 @@ def addItem():
     # Adiciona o produto à lista de produtos
     produtos.append(produto.copy())
     print("Item adicionado com sucesso!\n")
+    # Salva as alterações no arquivo "cardapio.txt"
+    save()
 
 def removeItem():
     # TO DO
@@ -75,7 +76,7 @@ def printItens():
     # Bernardo Plottegher
     pass
 
-def saveAndClose():
+def save():
     # Cria ou abre o arquivo chamado "cardápio.txt"
     with open("cardapio.txt", "w") as file:
         # Percorre a lista de Produtos
@@ -85,8 +86,6 @@ def saveAndClose():
             file.write(f"Nome: {produto['name']}\n")
             file.write(f"Preço: {produto['price']}\n")
             file.write("\n")
-
-    print("Cardápio salvo em 'cardapio.txt'. Programa encerrado.")
 
 # Looping de execução do programa
 while True:
@@ -114,7 +113,7 @@ while True:
 
     # Salvar em txt e Sair
     elif(option == 6):
-        saveAndClose()
+        print("Saindo...")
         break
 
     else:
