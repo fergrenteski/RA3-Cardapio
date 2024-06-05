@@ -1,6 +1,13 @@
 #!Python3
+
+#Importações
+import os
+
 # Lista de Produtos
 produtos = []
+
+# Contagem para limpar console
+contagem =  0
 
 categorias = {
     "1": "Bebidas",
@@ -30,29 +37,76 @@ def printMenu():
     print("6) Salvar e sair")
     print("-------------------------------------")
 
+# Limpa Console
+def limpar_console():
+    input("\n Pressione Enter para continuar...")
+    # Verifica o Sistema
+    if os.name == 'nt':
+        # Windows
+        os.system('cls')
+    else:
+        # Linux, Mac
+        os.system('clear')
+
+# Carrega itens do arquivo "cardapio.txt"
+def carregar_itens():
+     # Verifica se existe arquivo "cardapio.txt"
+     if os.path.exists("cardapio.txt"):
+        # Abre o arquivo com modo leitura "r"
+        with open("cardapio.txt", "r") as file:
+            # Lê todas as linhas do arquivo
+            lines = file.readlines()
+            # Contador de linhas
+            i = 0
+            while i < len(lines):
+                # Verifica se ainda há linhas suficientes para processar um produto completo
+                if i + 4 <= len(lines):
+                    # Popula Categoria do Produto
+                    produto["category"] = lines[i].strip().split(": ")[1]
+                    # Popula Tipo do Produto
+                    produto["item"] = lines[i+1].strip().split(": ")[1]
+                    # Popula Nome do Produto
+                    produto["name"] = lines[i+2].strip().split(": ")[1]
+                    # Popula Preço do Produto
+                    produto["price"] = lines[i+3].strip().split(": ")[1]
+                    # Adiciona o produto à lista de produto
+                    produtos.append(produto.copy())
+                    # Pula 5 linhas, pois os produtos estão separados por \n
+                    i += 5
+                else:
+                    # Se não possui mais produtos no arquivo, quebra.
+                    break
+
 # Adicionando Item
 def addItem():
     # Escolha a Categoria
     print("Qual Categoria?")
     # Percorre as categorias exibindo cada uma delas
     for key, value in categorias.items():
+        #Exibe as categorias
         print(f"{key}) {value}")
     optionC = input("Digite o número da categoria: ")
     # Verificar se a categoria escolhida é válida
     if optionC in categorias:
+        # Popula Categoria do Produto
         produto["category"] = categorias[optionC]
     else:
         print("Categoria inválida. Item não adicionado.")
         return
-    # Tipo/item
+    # Popula Tipo do Produto
     produto["item"] = input("Digite o Tipo de Produto: ")
-    # Nome
+    # Popula Nome do Produto
     produto["name"] = input("Digite o Nome do Produto: ")
-    # Preço
+    # Verifica se o nome do produto já existe na lista
+    for p in produtos:
+        if p["name"] == produto["name"]:
+            print("Produto com este nome já existe. Item não adicionado.")
+            return
+    # Popula Preço do Produto
     produto["price"] = input("Digite o Preço do Produto: ")
     # Adiciona o produto à lista de produtos
     produtos.append(produto.copy())
-    print("Item adicionado com sucesso!\n")
+    print("\nItem adicionado com sucesso!\n")
     # Salva as alterações no arquivo "cardapio.txt"
     save()
 
@@ -87,32 +141,40 @@ def save():
             file.write(f"Preço: {produto['price']}\n")
             file.write("\n")
 
+# Carrega os itens que estão no arquivo "cardápio.txt"
+carregar_itens()
+
 # Looping de execução do programa
 while True:
+    # Limpa Console
+    if contagem > 0:
+        limpar_console()
+    contagem += 1
+    # Exibe menu
     printMenu()
-    option = int(input("Escolha uma das opções: "))
+    option = input("Escolha uma das opções: ")
     # Adicionar Item
-    if(option == 1):
+    if(option == "1"):
         addItem()
 
     # Remover item
-    elif(option == 2):
+    elif(option == "2"):
         removeItem()
 
     # Editar Item
-    elif(option == 3):
+    elif(option == "3"):
         editItem()
 
     # Buscar Item
-    elif(option == 4):
+    elif(option == "4"):
         searchItem()
 
     # Exibir Itens
-    elif(option == 5):
+    elif(option == "5"):
         printItens()
 
     # Salvar em txt e Sair
-    elif(option == 6):
+    elif(option == "6"):
         print("Saindo...")
         break
 
