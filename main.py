@@ -148,7 +148,7 @@ def save():
             file.write(f"Categoria: {produto['category']}\n")
             file.write(f"Tipo: {produto['item']}\n")
             file.write(f"Nome: {produto['name']}\n")
-            file.write(f"Preço: {produto['price']}\n")
+            file.write(f"Preco: {produto['price']}\n")
             file.write("\n")
 
 # Carrega os itens que estão no arquivo "cardápio.txt"
