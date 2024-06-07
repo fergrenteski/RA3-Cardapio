@@ -126,9 +126,19 @@ def searchItem():
     pass
 
 def printItens():
-    # TO DO
-    # Bernardo Plottegher
-    pass
+    # Verifica se a lista de produtos está vazia
+    if not produtos:
+        print("A lista de produtos está vazia. Nenhum item para remover.")
+        return
+    
+    print("Escolha um item que deseja remover: \n")
+    # Exibe os produtos da lista
+    for idx, produto in enumerate(produtos):
+        print(f"Identificador: {idx + 1}"
+              + f"| Categoria: {produto['category']} "
+              + f"| Tipo: {produto['item']} "
+              + f"| Nome: {produto['name']} "
+              + f"| Preço: {produto['price']}")
 
 def save():
     # Cria ou abre o arquivo chamado "cardápio.txt"

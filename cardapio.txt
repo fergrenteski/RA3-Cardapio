@@ -1,9 +1,5 @@
-Categoria: Sobremesas
-Tipo: 3
-Nome: 3
-Preço: 3
+Categoria: Bebidas
+Tipo: Refri
+Nome: Coca-Cola
+Pre�o: 5,00
 
-Categoria: Prato Principal
-Tipo: 12
-Nome: 12
-Preço: 12
