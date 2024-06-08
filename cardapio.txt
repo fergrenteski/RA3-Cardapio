@@ -1,5 +1,0 @@
-Categoria: Bebidas
-Tipo: Refri
-Nome: Coca-Cola
-Preço: 5,00
-

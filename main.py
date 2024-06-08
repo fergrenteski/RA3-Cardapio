@@ -138,7 +138,7 @@ def printItens():
               + f"| Categoria: {produto['category']} "
               + f"| Tipo: {produto['item']} "
               + f"| Nome: {produto['name']} "
-              + f"| Preço: {produto['price']}")
+              + f"| Preco: {produto['price']}")
 
 def save():
     # Cria ou abre o arquivo chamado "cardápio.txt"
@@ -148,7 +148,7 @@ def save():
             file.write(f"Categoria: {produto['category']}\n")
             file.write(f"Tipo: {produto['item']}\n")
             file.write(f"Nome: {produto['name']}\n")
-            file.write(f"Preço: {produto['price']}\n")
+            file.write(f"Preco: {produto['price']}\n")
             file.write("\n")
 
 # Carrega os itens que estão no arquivo "cardápio.txt"
