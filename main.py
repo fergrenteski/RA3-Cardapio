@@ -138,7 +138,7 @@ def printItens():
               + f"| Categoria: {produto['category']} "
               + f"| Tipo: {produto['item']} "
               + f"| Nome: {produto['name']} "
-              + f"| Preço: {produto['price']}")
+              + f"| Preco: {produto['price']}")
 
 def save():
     # Cria ou abre o arquivo chamado "cardápio.txt"
