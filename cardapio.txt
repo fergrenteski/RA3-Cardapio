@@ -1,0 +1,5 @@
+Categoria: Bebidas
+Tipo: refri
+Nome: cocal
+Preco: 5
+
