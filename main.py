@@ -111,9 +111,33 @@ def addItem():
     save()
 
 def removeItem():
-    # TO DO
-    # Ana Paula Alves
-    pass
+    # Verifica se a lista de produtos está vazia
+    if not produtos:
+        print("A lista de produtos está vazia. Nenhum item para remover.")
+        return
+    
+    print("Escolha um item que deseja remover: \n")
+    # Exibe os produtos da lista
+    for idx, produto in enumerate(produtos):
+        print(f"Identificador: {idx + 1}"
+              + f"| Categoria: {produto['category']} "
+              + f"| Tipo: {produto['item']} "
+              + f"| Nome: {produto['name']} "
+              + f"| Preço: {produto['price']}")
+        
+    # Opção para realizar a remoção
+    optionX = int(input("\nSelecione um identificador: "))
+
+    # Verifica se o índice informado existe na lista
+    if 0 <= optionX <= len(produtos):
+        # Remove o item de acordo com o índice
+        produtos.pop(optionX - 1)
+        print("Item removido com sucesso!\n")
+    else:
+        print("Identificador inválido. Item não removido")
+        return
+    # Salva as alterações no arquivo "cardapio.txt"
+    save()
 
 def editItem():
     # TO DO
