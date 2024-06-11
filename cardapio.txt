@@ -1,1 +1,10 @@
+Categoria: Sobremesas
+Tipo: Sorvete
+Nome: Sorvete de Baunilha
+Preco: 9.0
+
+Categoria: Prato Principal
+Tipo: Massa
+Nome: Penne
+Preco: 10.9
 
