@@ -26,9 +26,7 @@ produto = {
 # Impressão do Menu de seleção
 def printMenu():
     print("-------------------------------------")
-    print("Seja bem vindo ao Cardápio")
-    print("")
-    print("Selecione uma das opções:")
+    print("Seja bem vindo ao Cardápio \n")
     print("1) Adicionar itens ao cardápio")
     print("2) Excluir itens do cardápio")
     print("3) Alterar Itens do cardápio")
@@ -39,7 +37,7 @@ def printMenu():
 
 # Limpa Console
 def clearConsole():
-    input("\n Pressione Enter para continuar...")
+    input("\nPressione Enter para continuar...")
     # Verifica o Sistema
     if os.name == 'nt':
         # Windows
@@ -131,7 +129,7 @@ def printItens():
         print("A lista de produtos está vazia. Nenhum item para remover.")
         return
     
-    print("Escolha um item que deseja remover: \n")
+    print("Itens do Cardápio: \n")
     # Exibe os produtos da lista
     for idx, produto in enumerate(produtos):
         print(f"Identificador: {idx + 1}"

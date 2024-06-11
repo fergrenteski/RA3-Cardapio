@@ -1,0 +1,14 @@
+--------------------------------- 
+---------   COMANDA   ----------- 
+--------------------------------- 
+Categoria: Bebidas
+Tipo: refri
+Nome: Pepsoi
+Preco: 5.00
+Quantidade: 1
+Total: 5.00
+
+--------------------------------- 
+Total da Comanda: R$ 5.00
+Gorjeta (10.00%): R$ 0.50
+Total com Gorjeta: R$ 5.50
