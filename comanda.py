@@ -70,9 +70,8 @@ def loadItems():
                     produto["item"] = lines[i+1].strip().split(": ")[1]
                     # Popula Nome do Produto
                     produto["name"] = lines[i+2].strip().split(": ")[1]
-                    # Popula Preço do Produto (Substitui vírgula por ponto)
-                    price_str = lines[i+3].strip().split(": ")[1].replace(",", ".")
-                    produto["price"] = float(price_str)
+                    # Popula Preço do Produto
+                    produto["price"] = float(lines[i+3].strip().split(": ")[1])
                     # Adiciona o produto à lista de produto
                     produtos.append(produto.copy())
                     # Pula 5 linhas, pois os produtos estão separados por \n
@@ -98,7 +97,7 @@ def addItem():
               + f"| Preco: {produto['price']}")
 
     # Solicita o identificador do produto
-    idx = int(input("Digite o identificador do produto que deseja adicionar: ")) - 1
+    idx = int(input("\nDigite o identificador do produto que deseja adicionar: ")) - 1
     
     # Verifica se existe nos produtos o índice selecionado
     if idx < 0 or idx >= len(produtos):
@@ -178,15 +177,14 @@ def removeItem():
 
 # Limpa a comanda
 def clearComanda():
-    # Verifica se a comanda não está vazia
-    if not comanda:
-        print("A comanda já está vazia.")
-        return
     # Limpa a lista da comanda
     comanda.clear()
+    # Limpa o Arquivo "comanda.txt"
+    with open("comanda.txt", "w") as file:
+        pass
     print("Comanda limpa com sucesso")
 
-    save()
+    
 
 # Salva a Comanda no arquivo
 def save():
@@ -218,7 +216,8 @@ def save():
 
 # Carrega os itens que estão no arquivo "cardápio.txt"
 loadItems()
-
+# Limpa a comanda, caso tenha produtos
+clearComanda()
 # Looping de execução do programa
 while True:
     # Limpa Console

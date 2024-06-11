@@ -20,7 +20,7 @@ produto = {
     "category": "",
     "item": "",
     "name": "",
-    "price": ""
+    "price": 0.0
 }
 
 # Impressão do Menu de seleção
@@ -66,7 +66,7 @@ def loadItems():
                     # Popula Nome do Produto
                     produto["name"] = lines[i+2].strip().split(": ")[1]
                     # Popula Preço do Produto
-                    produto["price"] = lines[i+3].strip().split(": ")[1]
+                    produto["price"] = float(lines[i+3].strip().split(": ")[1])
                     # Adiciona o produto à lista de produto
                     produtos.append(produto.copy())
                     # Pula 5 linhas, pois os produtos estão separados por \n
@@ -101,7 +101,7 @@ def addItem():
             print("Produto com este nome já existe. Item não adicionado.")
             return
     # Popula Preço do Produto
-    produto["price"] = input("Digite o Preço do Produto: ")
+    produto["price"] = float(input("Digite o Preço do Produto: "))
     # Adiciona o produto à lista de produtos
     produtos.append(produto.copy())
     print("\nItem adicionado com sucesso!\n")
@@ -138,9 +138,62 @@ def removeItem():
     save()
 
 def editItem():
-    # TO DO
-    # Bruno Reich
-    pass
+    # Verifica se a lista de produtos está vazia
+    if not produtos:
+        print("A lista de produtos está vazia. Nenhum item para remover.")
+        return
+
+    print("Escolha um item que deseja editar: \n")
+    # Exibe os produtos da lista
+    for idx, produto in enumerate(produtos):
+        print(f"Identificador: {idx + 1}"
+              + f"| Categoria: {produto['category']} "
+              + f"| Tipo: {produto['item']} "
+              + f"| Nome: {produto['name']} "
+              + f"| Preço: {produto['price']}")
+        
+    # Opção para realizar a edição
+    optionX = int(input("\nSelecione um identificador: "))
+
+    # Verifica se o índice informado existe na lista
+    if 0 <= optionX <= len(produtos):
+        # Busca o produto na lista de produtos
+        produto = produtos[optionX - 1]
+        # Percorre as categorias exibindo cada uma delas
+        print("Categorias disponíveis: ")
+        for key, value in categorias.items():
+            #Exibe as categorias
+            print(f"{key}) {value}")
+        # Solicita categoria, deve ser inserido um numero que está dentro das categorias
+        # Caso contrário, ele não insere.
+        new_category = input(f"Nova categoria (atual: {produto['category']}): ") or produto['category']
+         # Verificar se a categoria escolhida é válida
+        if new_category in categorias:
+            # Popula Categoria do Produto
+            produto['category'] = categorias[new_category]
+        # Verificar se a categoria antiga que não é uma chave, existe nas categorias
+        elif new_category in categorias.values():
+             # Popula Categoria do Produto
+             produto['category'] = produto['category']
+        else:
+            print("Categoria inválida. Item não adicionado.")
+            return
+        # Inclui novos valores, se não digitar nada, ele mantem o mesmo. (or)
+        new_item = input(f"Novo tipo (atual: {produto['item']}): ") or produto['item']
+        new_name = input(f"Novo nome (atual: {produto['name']}): ") or produto['name']
+        new_price = float(input(f"Novo preço (atual: {produto['price']}): ")) or float(produto['price'])
+
+        # Atualiza os valores do produto
+        produto['item'] = new_item
+        produto['name'] = new_name
+        produto['price'] = new_price
+
+        print("Produto atualizado com sucesso!")
+    else:
+        print("Identificador inválido. Item não editado")
+        return
+    # Salva as alterações no arquivo "cardapio.txt"
+    save()
 
 def searchItem():
     # TO DO

@@ -1,14 +1,21 @@
 --------------------------------- 
 ---------   COMANDA   ----------- 
 --------------------------------- 
-Categoria: Bebidas
-Tipo: refri
-Nome: Pepsoi
-Preco: 5.00
+Categoria: Sobremesas
+Tipo: Sorvete
+Nome: Sorvete de Baunilha
+Preco: 9.00
 Quantidade: 1
-Total: 5.00
+Total: 9.00
+
+Categoria: Prato Principal
+Tipo: Massa
+Nome: Penne
+Preco: 10.90
+Quantidade: 1
+Total: 10.90
 
 --------------------------------- 
-Total da Comanda: R$ 5.00
-Gorjeta (10.00%): R$ 0.50
-Total com Gorjeta: R$ 5.50
+Total da Comanda: R$ 19.90
+Gorjeta (10.00%): R$ 1.99
+Total com Gorjeta: R$ 21.89
