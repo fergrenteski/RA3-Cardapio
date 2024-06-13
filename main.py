@@ -196,9 +196,27 @@ def editItem():
     save()
 
 def searchItem():
-    # TO DO
-    # Ryan Lucas
-    pass
+    # Verifica se a lista de produtos está vazia
+    if not produtos:
+        print("A lista de produtos está vazia. Nenhum item para remover.")
+        return
+    
+    # Produto a ser pesquisado
+    name = input("Digite o nome do produto a ser pesquisado: ")
+    # Lista de produtos encontrados (Converte para letras maiúsculas)
+    produtos_encontrados = [p for p in produtos if name.lower() in p["name"].lower()]
+    # Verifica se encontrou algum produto
+    if not produtos_encontrados:
+        print("\nNenhum produto encontrado.")
+        return
+    
+    # Exibe o produto encontrado
+    for idx, produto in enumerate(produtos_encontrados):
+        print(f"\nProduto encontrado {idx + 1}:")
+        print(f"Categoria: {produto['category']}")
+        print(f"Tipo: {produto['item']}")
+        print(f"Nome: {produto['name']}")
+        print(f"Preço: {produto['price']}")
 
 def printItens():
     # Verifica se a lista de produtos está vazia
